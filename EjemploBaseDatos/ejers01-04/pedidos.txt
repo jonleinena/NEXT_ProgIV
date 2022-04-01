@@ -1,0 +1,6 @@
+Pedido 1
+12.5
+Pedido 2
+20
+Pedido 3
+8.45
