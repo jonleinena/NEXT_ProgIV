@@ -50,7 +50,7 @@ void Element ::setNext(Element *e)
 {
     this->next = e;
 }
-Element ::*getNext() const
+Element *Element::getNext() const
 {
     return this->next;
 }
@@ -70,6 +70,32 @@ void Stack::push(int dato)
 {
     Element *e = new Element(dato);
     this->size++;
-    this->first.setNext(e);
+    e->setNext(this->first);
     this->first = e;
+}
+
+int Stack::pop()
+{
+    this->size--;
+    Element *e = this->first;
+    this->first = e->getNext();
+    int data = e->getData();
+    delete[] e;
+    return data;
+}
+
+void Stack::clear()
+{
+    while (this->size > 0)
+    {
+        this->pop();
+    }
+
+    while (this->size > 0)
+    {
+        Element *e = this->first;
+        this->first = e->getNext();
+        delete[] e;
+        this->size--;
+    }
 }
